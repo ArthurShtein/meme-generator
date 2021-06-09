@@ -1,0 +1,78 @@
+ /* ----------------------------------------------------------->  Fonts */
+
+
+
+
+
+
+/* ------------------------------------------------------------>  Base */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background-color: rgb(204, 204, 204);
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+
+  img {
+    height: 250px;
+    width: 250px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* --------------------------------------------------------->  Helpers */
+
+  .clean-list {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* ----------------------------------------------------------> Header  */
+
+ .main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 130px;
+    background-color: rgb(190, 187, 165);
+  }
+
+  .main-nav {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content:space-evenly
+  }
+
+
+
+  /* ----------------------------------------------------------> Canvas  */
+
+  .editor-container {
+    display: none;
+    border: black solid 1px;
+    background-color: rgb(175, 175, 255);
+  }
+
+  .gallery-container {
+    display: block;
+  }
+
+
+  .style-container {
+    padding-left: 10px;
+  }
+
+  /* .gallery-grid {
+    display: grid;
+  } */
