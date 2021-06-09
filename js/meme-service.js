@@ -38,8 +38,6 @@ var gMeme = {
     ]
 }
 
-
-
 function drawText(x, y) {
     var txtLine = gMeme.lines[gMeme.selectedLineIdx].txt
     gCtx.lineWidth = 2
@@ -59,11 +57,6 @@ function changeSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
     renderCanvas()
 }
-
-// function renderCanvas() {
-//     elEditor = document.querySelector('.editor-container')
-//     elEditor.style.display = 'block'
-// }
 
 function getCurrLine(id) {
     var lines = gMeme.lines
