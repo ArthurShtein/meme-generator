@@ -33,6 +33,7 @@ var gMeme = {
             txt: 'Text Line 1 ',
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white',
             posY: 50
         },
@@ -40,6 +41,7 @@ var gMeme = {
             txt: 'Text Line 2 ',
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white',
             posY: 350
         }
@@ -85,4 +87,12 @@ function getTxt(){
 
 function changeAlign(val){
     gMeme.lines[gMeme.selectedLineIdx].align = val
+}
+
+function selectFont(val) {
+    gMeme.lines[gMeme.selectedLineIdx].font = val
+}
+
+function setColor(val){
+    gMeme.lines[gMeme.selectedLineIdx].color = val
 }

@@ -14,16 +14,16 @@ function renderCanvas() {
         var lines = getCurrLine()
 
         lines.forEach((line) => {
-            drawText(line.txt , line.posY ,line.size , line.align)
+            drawText(line.txt , line.posY ,line.size , line.align, line.font , line.color)
         })
     }
 }
 
-function drawText(txt, y , size , align) {
+function drawText(txt, y , size , align , font, color) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = `${size}px Impact`
+    gCtx.fillStyle = `${color}`
+    gCtx.font = `${size}px ${font}`
     gCtx.textAlign = align
 
     x = gElCanvas.width / 2;
@@ -33,7 +33,7 @@ function drawText(txt, y , size , align) {
 }
 
 function renderGallery() {
-    let elGallery = document.querySelector('.gallery-grid')
+    let elGallery = document.querySelector('.gallery-container')
     let strHTML = ``
     gImgs.forEach(img => {
         strHTML += `<img class="img-card" onclick="onImgPick(${img.id})" src="img/${img.id}.jpg">`
@@ -69,12 +69,22 @@ function onChangeSize(diff) {
     renderCanvas()
 }
 
+function onSelectFont(val) {
+    console.log(val);
+    selectFont(val)
+    renderCanvas()
+}
+function onSetColor(val) {
+    setColor(val)
+    renderCanvas()
+}
+
 function showGallery() {
     elEditor = document.querySelector('.meme-container')
     elEditor.style.display = 'none'
 
     elGallery = document.querySelector('.gallery-container')
-    elGallery.style.display = 'block'
+    elGallery.style.display = 'grid'
 }
 
 function downloadImg(elLink) {

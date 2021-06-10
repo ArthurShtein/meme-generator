@@ -16,7 +16,9 @@
     <header class="main-header ">
         <div class="header-container">
 
-            <a href="#" onclick="showGallery()"><h1> Meme<br>Generator </h1></a>
+            <a href="#" onclick="showGallery()">
+                <h1> Meme<br>Generator </h1>
+            </a>
         </div>
         <ul class="main-nav clean-list">
             <li><a href="#" onclick="showGallery()"> Gallery</a> </li>
@@ -27,8 +29,8 @@
     </header>
 
     <div class="gallery-container">
-        <h2> Step 1 - Choose your Meme :</h2>
-        <div class="gallery-grid"></div>
+        <!-- <h2> Step 1 - Choose your Meme :</h2> -->
+        <!-- <div class="gallery-grid"></div> -->
     </div>
 
 
@@ -42,31 +44,41 @@
             </div>
             <div class="style-container">
                 <h3> Style and Design: </h3>
-                <input class="input" type="text" placeholder="Meme Text Line" oninput="getText(this.value)">
-                <button class="btn"> <span class="fi-rr-text"></span></button>
-
+                <input class="txtinput" type="text" placeholder="Meme Text Line" oninput="getText(this.value)">
+                <select id="selectFontFamily" name="selectFontFamily" onchange="onSelectFont(this.value)">
+                    <option> Impact </option>
+                    <option> Arial </option>
+                    <option> Verdana </option>
+                    <option> Lucida Sans Unicode </option>
+                </select>
                 <div class="">
-                    
+
                     <button class="btn" onclick="onChangeAlign('right')"> <span class="fi-rr-align-left"> </button>
-                    <button class="btn" onclick="onChangeAlign('center')"> <span class="fi-rr-align-center">  </button>
+                    <button class="btn" onclick="onChangeAlign('center')"> <span class="fi-rr-align-center"> </button>
                     <button class="btn" onclick="onChangeAlign('left')"> <span class="fi-rr-align-right"> </button>
+                    <input type="color" name="shape-color" onchange="onSetColor(this.value)">
                     <br>
                     <button class="btn" onclick="onChangeSize(5)"> <span class="fi-rr-plus-small"> </button>
-                    <button class="btn" onclick="onChangeSize(-5)"> <span class="fi-rr-minus-small ">  </button>
+                    <button class="btn" onclick="onChangeSize(-5)"> <span class="fi-rr-minus-small "> </button>
                     <button class="btn" onclick="onMoveTxt(-10)"> <span class="fi-rr-angle-small-up"></span> </button>
                     <button class="btn" onclick="onMoveTxt(10)"> <span class="fi-rr-angle-small-down"></span></button>
                     <button class="btn" onclick="onSwitchLine()"> <span class=" fi-rr-apps-sort "></span></button>
 
 
+
+
+
+
                     <div class="inputs">
-        
+
                         <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                             <input name="img" id="imgData" type="hidden" />
                             <button class="btn" type="submit">Publish</button>
-                            <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                            <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as
+                                jpeg</a>
                             <div class="share-container"></div>
-                          </form>
-                
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -76,7 +88,7 @@
 
     <footer>
         <p>
-            Coffe Rights 2021 © <br>  Arthur Shtein
+            Coffe Rights 2021 © <br> Arthur Shtein
         </p>
 
     </footer>
