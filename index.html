@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Generator</title>
-
+    <title> Meme Generator</title>
+    <link href="css/uicons-regular-rounded.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,9 +14,12 @@
 <body onload="init()">
 
     <header class="main-header ">
-        <div class="header-container"> Meme Generator</div>
+        <div class="header-container">
+
+            <a href="#" onclick="showGallery()"><h1> Meme<br>Generator </h1></a>
+        </div>
         <ul class="main-nav clean-list">
-            <li><a href="#"> Gallery</a> </li>
+            <li><a href="#" onclick="showGallery()"> Gallery</a> </li>
             <li><a href="#"> About </a> </li>
 
         </ul>
@@ -27,25 +30,58 @@
         <h2> Step 1 - Choose your Meme :</h2>
         <div class="gallery-grid"></div>
     </div>
-    
-    
-    <div class="editor-container">
+
+
+    <div class="meme-container">
+
         <h2> Step 2 - Design your Meme :</h2>
-        <div class="canvas-container">
-            <h2> </h2>
-            <canvas id="img-canvas" height="375" width="375" onclick=""></canvas>
-        </div>
-        <div class="style-container">
-            <h3> Style and Design: </h3>
-            <button> ✎ </button>
-            <button onclick="onChangeSize(5)"> ➕ </button>
-            <button onclick="onChangeSize(-5)"> ➖ </button>
-            <button> Color </button>
+        <div class="editor-container">
+            <div class="canvas-container">
+                <h2> </h2>
+                <canvas id="img-canvas" height="375" width="375" onclick=""></canvas>
+            </div>
+            <div class="style-container">
+                <h3> Style and Design: </h3>
+                <input class="input" type="text" placeholder="Meme Text Line" oninput="getText(this.value)">
+                <button class="btn"> <span class="fi-rr-text"></span></button>
+
+                <div class="">
+                    
+                    <button class="btn" onclick="onChangeAlign('right')"> <span class="fi-rr-align-left"> </button>
+                    <button class="btn" onclick="onChangeAlign('center')"> <span class="fi-rr-align-center">  </button>
+                    <button class="btn" onclick="onChangeAlign('left')"> <span class="fi-rr-align-right"> </button>
+                    <br>
+                    <button class="btn" onclick="onChangeSize(5)"> <span class="fi-rr-plus-small"> </button>
+                    <button class="btn" onclick="onChangeSize(-5)"> <span class="fi-rr-minus-small ">  </button>
+                    <button class="btn" onclick="onMoveTxt(-10)"> <span class="fi-rr-angle-small-up"></span> </button>
+                    <button class="btn" onclick="onMoveTxt(10)"> <span class="fi-rr-angle-small-down"></span></button>
+                    <button class="btn" onclick="onSwitchLine()"> <span class=" fi-rr-apps-sort "></span></button>
+
+
+                    <div class="inputs">
+        
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="btn" type="submit">Publish</button>
+                            <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                            <div class="share-container"></div>
+                          </form>
+                
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
+    <footer>
+        <p>
+            Coffe Rights 2021 © <br>  Arthur Shtein
+        </p>
 
+    </footer>
+
+    <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>

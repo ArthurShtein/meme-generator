@@ -30,35 +30,59 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Edit this Text',
-            size: 20,
+            txt: 'Text Line 1 ',
+            size: 40,
             align: 'center',
-            color: 'white'
+            color: 'white',
+            posY: 50
+        },
+        {
+            txt: 'Text Line 2 ',
+            size: 40,
+            align: 'center',
+            color: 'white',
+            posY: 350
         }
     ]
 }
 
-function drawText(x, y) {
-    var txtLine = gMeme.lines[gMeme.selectedLineIdx].txt
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'red'
-    gCtx.fillStyle = 'white'
-    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Arial`
-    gCtx.textAlign = 'center'
+function switchLine() {
+    if (gMeme.selectedLineIdx === 0) {
+        gMeme.selectedLineIdx += 1
+    } else {
+        gMeme.selectedLineIdx = 0
+    }
 
-    x = gElCanvas.width / 2;
-    y = 50;
+    console.log(gMeme.selectedLineIdx)
 
-    gCtx.fillText(txtLine, x, y)
-    gCtx.strokeText(txtLine, x, y)
+}
+
+function getText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    renderCanvas()
 }
 
 function changeSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
-    renderCanvas()
 }
 
-function getCurrLine(id) {
-    var lines = gMeme.lines
-    return lines[0].txt
+function moveTxt(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].posY += diff
+}
+
+function getCurrLine() {
+    return gMeme.lines
+}
+
+function getSelectedLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+
+function getTxt(){
+    gMeme.lines[gMeme.selectedLineIdx].txt
+}
+
+function changeAlign(val){
+    gMeme.lines[gMeme.selectedLineIdx].align = val
 }
