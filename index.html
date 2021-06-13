@@ -28,15 +28,18 @@
         </div>
     </header>
 
+
+    <div class="gallery-details">
+        <h2> Step 2 - Design your Meme :</h2>
+        <input class="searchinput" type="text" placeholder="Search meme" oninput="onSearchTxt(this.value)">
+
+    </div>
     <div class="gallery-container">
-        <!-- <h2> Step 1 - Choose your Meme :</h2> -->
-        <!-- <div class="gallery-grid"></div> -->
     </div>
 
 
     <div class="meme-container">
 
-        <h2> Step 2 - Design your Meme :</h2>
         <div class="editor-container">
             <div class="canvas-container">
                 <h2> </h2>
@@ -62,13 +65,12 @@
                     <button class="btn" onclick="onChangeSize(-5)"> <span class="fi-rr-minus-small "> </button>
                     <button class="btn" onclick="onMoveTxt(-10)"> <span class="fi-rr-angle-small-up"></span> </button>
                     <button class="btn" onclick="onMoveTxt(10)"> <span class="fi-rr-angle-small-down"></span></button>
+                    <br>
                     <button class="btn" onclick="onSwitchLine()"> <span class=" fi-rr-apps-sort "></span></button>
-
-
-
-
-
-
+                    <button class="btn" onclick="onAddNewLine()"> <span class="fi-rr-add"></span></button>
+                    <button class="btn" onclick="onDeleteLine()"> <span class="fi-rr-delete"></i></button>
+                        <br>
+                        <br>
                     <div class="inputs">
 
                         <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
@@ -87,10 +89,7 @@
 
 
     <footer>
-        <p>
-            Coffe Rights 2021 © <br> Arthur Shtein
-        </p>
-
+        <p>Coffe Rights 2021 © <br> Arthur Shtein</p>
     </footer>
 
     <script src="js/upload-service.js"></script>

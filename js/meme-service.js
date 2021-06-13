@@ -1,28 +1,27 @@
-
 'use strict';
 
 var gElCanvas
 var gCtx;
 
 var gImgs = [
-    { id: 1, url: 'img/1.jpg' },
-    { id: 2, url: 'img/2.jpg' },
-    { id: 3, url: 'img/3.jpg' },
-    { id: 4, url: 'img/4.jpg' },
-    { id: 5, url: 'img/5.jpg' },
-    { id: 6, url: 'img/6.jpg' },
-    { id: 7, url: 'img/7.jpg' },
-    { id: 8, url: 'img/8.jpg' },
-    { id: 9, url: 'img/9.jpg' },
-    { id: 10, url: 'img/10.jpg' },
-    { id: 11, url: 'img/11.jpg' },
-    { id: 12, url: 'img/12.jpg' },
-    { id: 13, url: 'img/13.jpg' },
-    { id: 14, url: 'img/14.jpg' },
-    { id: 15, url: 'img/15.jpg' },
-    { id: 16, url: 'img/16.jpg' },
-    { id: 17, url: 'img/17.jpg' },
-    { id: 18, url: 'img/18.jpg' },
+    { id: 1, url: 'img/1.jpg', keyWords: ['trump']},
+    { id: 2, url: 'img/2.jpg', keyWords: ['funny', 'animals','dog']},
+    { id: 3, url: 'img/3.jpg',keyWords: ['funny', 'animals','dog']},
+    { id: 4, url: 'img/4.jpg',keyWords: ['funny', 'animals','cat']},
+    { id: 5, url: 'img/5.jpg' , keyWords: ['funny', 'kids']},
+    { id: 6, url: 'img/6.jpg' ,keyWords: ['funny']},
+    { id: 7, url: 'img/7.jpg' ,keyWords: ['funny', 'kids']},
+    { id: 8, url: 'img/8.jpg' ,keyWords: ['funny']},
+    { id: 9, url: 'img/9.jpg' ,keyWords: ['funny', 'kids']},
+    { id: 10, url: 'img/10.jpg' ,keyWords: ['funny','obama']},
+    { id: 11, url: 'img/11.jpg' ,keyWords: ['funny']},
+    { id: 12, url: 'img/12.jpg' ,keyWords: ['funny']},
+    { id: 13, url: 'img/13.jpg' ,keyWords: ['funny']},
+    { id: 14, url: 'img/14.jpg' ,keyWords: ['funny']},
+    { id: 15, url: 'img/15.jpg' ,keyWords: ['funny']},
+    { id: 16, url: 'img/16.jpg' ,keyWords: ['funny']},
+    { id: 17, url: 'img/17.jpg' ,keyWords: ['funny','putin']},
+    { id: 18, url: 'img/18.jpg' ,keyWords: ['funny']},
 ];
 
 var gMeme = {
@@ -30,7 +29,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Text Line 1 ',
+            txt: 'Edit text',
             size: 40,
             align: 'center',
             font: 'Impact',
@@ -38,7 +37,7 @@ var gMeme = {
             posY: 50
         },
         {
-            txt: 'Text Line 2 ',
+            txt: 'Edit text',
             size: 40,
             align: 'center',
             font: 'Impact',
@@ -48,15 +47,43 @@ var gMeme = {
     ]
 }
 
+function searchTxt(val) {
+    var filteredImg = gImgs.filter(img => {
+        var str = img.keyWords + '';
+        if (str.includes(val))
+        return img;
+    })
+    return filteredImg;
+}
+
 function switchLine() {
-    if (gMeme.selectedLineIdx === 0) {
-        gMeme.selectedLineIdx += 1
-    } else {
+
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
         gMeme.selectedLineIdx = 0
+    } else {
+        gMeme.selectedLineIdx++
     }
+}
 
-    console.log(gMeme.selectedLineIdx)
+function deleteLine(){
+    var currLineIdx = gMeme.selectedLineIdx
+    gMeme.lines.splice(currLineIdx, 1)
+    
+    if (gMeme.selectedLineIdx === 0) return;
+    gMeme.selectedLineIdx--
+}
 
+
+function addNewLine() {
+    var newLine = {
+        txt: 'New line',
+        size: 40,
+        align: 'center',
+        font: 'Impact',
+        color: 'white',
+        posY: 200
+    }
+    gMeme.lines.push(newLine)
 }
 
 function getText(txt) {
@@ -82,7 +109,8 @@ function getSelectedLine() {
 
 
 function getTxt(){
-    gMeme.lines[gMeme.selectedLineIdx].txt
+    var txt = gMeme.lines[gMeme.selectedLineIdx].txt
+    return txt;
 }
 
 function changeAlign(val){
